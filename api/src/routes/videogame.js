@@ -1,3 +1,4 @@
+require('dotenv').config();
 const {Router} = require('express');
 const router = Router();
 const axios = require('axios');
@@ -7,7 +8,7 @@ const {APIKEY} = process.env;
 //-----------ROUT TO GET-----VIDEOGAME------->
 
 router.get('/', async (req, res)=>{
-    const {name} = req.query;
+    
 
     try {
         
