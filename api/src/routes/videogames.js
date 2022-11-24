@@ -10,13 +10,11 @@ const { Videogame, Genre} = require('../db')
 router.get("/", async (req, res) => {
   const { name } = req.query;
   let dbVideogames = await Videogame.findAll({
-    include: Genre,
+    include:  Genre
   });
 
   if (name) {
     try {
-
-
       let vgNameBdReady = await dbVideogames.filter((game) =>
       game.name.toLowerCase().includes(name.toLowerCase())
       );
@@ -57,6 +55,7 @@ router.get("/", async (req, res) => {
   } else {
     try {
       let pages = 0;
+      let gamesDb = [...dbVideogames]
       let apiVideogames = await axios.get(
         `https://api.rawg.io/api/games?key=${API_KEY}`
       );
@@ -81,8 +80,9 @@ router.get("/", async (req, res) => {
             platforms: platform,
           };
         });
-        allGames = [...dbVideogames, ...allGamesApi];
+        allGames = [...gamesDb, ...allGamesApi];
         apiVideogames = await axios.get(apiVideogames.data.next);
+
       }
       return res.status(200).json(allGames);
     } catch (error) {
@@ -123,11 +123,11 @@ router.post("/", async (req, res) => {
     });
 
    
-   let vgNewGenre = await Genre.findAll({
+   const vgNewGenre = await Genre.findAll({
       where: { name: genres},
       
     });
-    createvg.addGenres(vgNewGenre);
+    createvg.addGenre(vgNewGenre);
 
     return res.status(200).send(`Se ha creado el juego ${name} con exito`);
   } catch (error) {
