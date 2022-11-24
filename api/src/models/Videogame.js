@@ -13,20 +13,25 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    descrition: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    releaseDate:{
+    released:{
       type: DataTypes.STRING
     },
     rating: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DECIMAL,
     },
-    plataforms: {
+    platforms: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    }
 
   }, {
     timestamps: false

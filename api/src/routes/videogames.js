@@ -12,30 +12,19 @@ router.get("/", async (req, res) => {
   let dbVideogames = await Videogame.findAll({
     include: Genre,
   });
-  dbVideogames = JSON.stringify(dbVideogames);
-  dbVideogames = JSON.parse(dbVideogames);
-
-  dbVideogames = dbVideogames.reduce(
-    (acc, el) =>
-      acc.concat({
-        ...el,
-        genres: el.genres.map((g) => g.name),
-      }),
-    []
-  );
 
   if (name) {
     try {
+
+
+      let vgNameBdReady = await dbVideogames.filter((game) =>
+      game.name.toLowerCase().includes(name.toLowerCase())
+      );
+      
       let vgNameApi = await axios.get(
         `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
       );
-      const vgNameBdReady = await dbVideogames.filter((game) =>
-        game.name.includes(name)
-      );
 
-      if (!vgNameApi.data.results && !vgNameBdReady.length) {
-        return res.status(400).send(`El juego ${name} no se ha encontrado`);
-      } else {
         const vgNameApiReady = vgNameApi.data.results.map((game) => {
           let platform = [];
           if (game.platforms) {
@@ -43,7 +32,6 @@ router.get("/", async (req, res) => {
               platform.push(game.platforms[i].platform.name);
             }
           }
-
           return {
             id: game.id,
             background_image: game.background_image,
@@ -55,14 +43,15 @@ router.get("/", async (req, res) => {
           };
         });
 
-        const videogamesName = [...vgNameBdReady, ...vgNameApiReady].splice(
-          0,
-          15
-        );
+        const videogamesName = [...vgNameBdReady, ...vgNameApiReady].splice( 0, 15 );
+
+        if(!videogamesName.length){ return res.status(400).send(`el juego ${name} no se escuentra`)}
 
         return res.status(200).json(videogamesName);
-      }
-    } catch (error) {
+        
+      
+    } 
+    catch (error) {
       console.log(error);
     }
   } else {
@@ -75,6 +64,12 @@ router.get("/", async (req, res) => {
       while (pages < 6) {
         pages++;
         const allGamesApi = apiVideogames.data.results.map((game) => {
+          let platform = [];
+          if (game.platforms) {
+            for (let i = 0; i < game.platforms.length; i++) {
+              platform.push(game.platforms[i].platform.name);
+            }
+          }
           return {
             id: game.id,
             background_image: game.background_image,
@@ -83,11 +78,11 @@ router.get("/", async (req, res) => {
             description: game.description_raw,
             released: game.released,
             rating: game.rating,
-            platforms: "platform.map((e) => e)",
+            platforms: platform,
           };
         });
         allGames = [...dbVideogames, ...allGamesApi];
-        apiVideogames = await axios.get(apiVideogames.data.next)
+        apiVideogames = await axios.get(apiVideogames.data.next);
       }
       return res.status(200).json(allGames);
     } catch (error) {
@@ -97,13 +92,47 @@ router.get("/", async (req, res) => {
 });
 
 
-//-----------ROUTES TO POST----VIDEOGAMES-------->
 
-router.post('/', async (req, res)=>{
+router.post("/", async (req, res) => {
+  const { name, description, released, rating, genres, platforms, background_image, createdInDb } =
+    req.body;
 
+  try {
+    if (!name || !description || !platforms || !genres) {
+      return res.status(400).send("Faltan datos obligatorios");
+    }
 
+    let noRepeat = await Videogame.findOne({
+      where:{
+        name: name,
+        released: released
+      }
+    })
 
+    if(noRepeat) {
+      return res.status(400).send(`Ya existe el juego ${name} lanzado el ${released}`)
+    }
 
+    let createvg = await Videogame.create({
+      name,
+      description,
+      released,
+      rating,
+      platforms,
+      background_image,
+    });
+
+   
+   let vgNewGenre = await Genre.findAll({
+      where: { name: genres},
+      
+    });
+    createvg.addGenres(vgNewGenre);
+
+    return res.status(200).send(`Se ha creado el juego ${name} con exito`);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 
