@@ -3,11 +3,11 @@ const {Router} = require('express');
 const router = Router();
 const axios = require('axios');
 const { API_KEY } = process.env;
-const { Videogame, Genre} = require('../db')
+const { Videogame, Genre} = require('../db');
 
 //-----------ROUTES TO GET----VIDEOGAMES-------->
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const { name } = req.query;
   let dbVideogames = await Videogame.findAll({
     include:  Genre
@@ -43,7 +43,7 @@ router.get("/", async (req, res) => {
 
         const videogamesName = [...vgNameBdReady, ...vgNameApiReady].splice( 0, 15 );
 
-        if(!videogamesName.length){ return res.status(400).send(`el juego ${name} no se escuentra`)}
+        if(!videogamesName.length){ return res.status(400).send(`${name} videogame not found`)}
 
         return res.status(200).json(videogamesName);
         
@@ -93,13 +93,13 @@ router.get("/", async (req, res) => {
 
 
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { name, description, released, rating, genres, platforms, background_image, createdInDb } =
     req.body;
 
   try {
     if (!name || !description || !platforms || !genres) {
-      return res.status(400).send("Faltan datos obligatorios");
+      return res.status(400).send('Mandatory data missing');
     }
 
     let noRepeat = await Videogame.findOne({
@@ -110,7 +110,7 @@ router.post("/", async (req, res) => {
     })
 
     if(noRepeat) {
-      return res.status(400).send(`Ya existe el juego ${name} lanzado el ${released}`)
+      return res.status(400).send(`There is already a ${name} videogame released in ${released}`)
     }
 
     let createvg = await Videogame.create({
@@ -129,7 +129,7 @@ router.post("/", async (req, res) => {
     });
     createvg.addGenre(vgNewGenre);
 
-    return res.status(200).send(`Se ha creado el juego ${name} con exito`);
+    return res.status(200).send(`The videogame ${name} has been created successfully`);
   } catch (error) {
     console.log(error);
   }

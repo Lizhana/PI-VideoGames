@@ -8,7 +8,7 @@ const {API_KEY} = process.env;
 
 //-----------ROUT TO GET-----VIDEOGAME:Params------->
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     if (id.length > 10) {
@@ -46,20 +46,20 @@ router.get("/:id", async (req, res) => {
   }
 }); 
 
-//-----------ROUT TO DELETE-----VIDEOGAME{body}------->
+//-----------ROUT TO DELETE-----VIDEOGAME{params}------->
 
-router.delete("/", async (req, res) => {
-  const { idDelete } = req.body;
+router.delete('/:id', async (req, res) => {
+  const { idDelete } = req.params;
   console.log(idDelete);
   try {
     if (idDelete.length < 10) {
-      return res.status(400).send("No puedes eliminar el juego");
+      return res.status(400).send('The videogame cannot be deleted');
     } else {
       const videoGameDelete = await Videogame.findOne({
         where: { id: idDelete },
       });
       videoGameDelete.destroy();
-      res.status(200).send("Videogame Deleted");
+      res.status(200).send('Deleted Videogame');
     }
   } catch (error) {
     console.log(error);
