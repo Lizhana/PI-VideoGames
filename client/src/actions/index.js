@@ -8,7 +8,6 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_RATING,
 
-
   General_Search,
   Details_Search,
   Genres_Search,
