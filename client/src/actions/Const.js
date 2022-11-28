@@ -8,7 +8,7 @@ GET_GENRES = 'GET_GENRES',   //<---
 GET_VIDEOGAMES = 'GET_VIDEOGAMES', //<---
 GET_VIDEOGAME_DETAILS = 'GET_VIDEOGAME_DETAILS', //<---
 ORDER_BY_NAME = 'ORDER_BY_NAME', //<---
-ORDER_BY_RATING = 'ORDER_BY_RATING', //<---
+ORDER_BY_RATING = 'ORDER_BY_RATING', 
 
 
 Details_Search = 'http://localhost:3001/videogame',

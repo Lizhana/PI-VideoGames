@@ -15,36 +15,51 @@ router.get('/:id', async (req, res) => {
       let dbVideogame = await Videogame.findOne({
         where: {
           id: id,
+          include: [Genre]
         },
       });
       return res.status(200).json(dbVideogame);
-    } else {
-      let apiVideogame = await axios.get(
-        `https://api.rawg.io/api/games/${id}?&key=${API_KEY}`
-      );
-
-      apiVideogame = apiVideogame.data.results.map((game) => {
-        let platform = [];
-        if (game.platforms) {
-          for (let i = 0; i < game.platforms.length; i++) {
-            platform.push(game.platforms[i].platform.name);
-          }
-        }
-        return {
-          id: game.id,
-          background_image: game.background_image,
-          name: game.name,
-          genres: game.genres?.map((g) => g.name),
-          released: game.released,
-          rating: game.rating,
-          platforms: platform.map((e) => e),
-        };
-      });
     }
-  } catch (error) {
-    console.log(error);
+     else 
+    {
+      const game = await axios.get(
+        `https://api.rawg.io/api/games/${id}?&key=${API_KEY}`);
+
+      if(game.data.id){
+        let genrestr=[]
+            for (i=0;i<game.data.genres.length;i++) {
+                genrestr.push(' ' + game.data.genres[i].name )
+            } 
+            let platformstr=[]
+            for (i=0;i<game.data.platforms.length;i++) {
+              platformstr.push(' '+game.data.platforms[i].platform.name)
+            } 
+
+        const foundApi = {
+          id: game.data.id,
+          background_image: game.data.background_image,
+          name: game.data.name,
+          genres: genrestr.toString(),
+          released: game.data.released,
+          rating: game.data.rating,
+          platforms: platformstr.toString(),
+        } 
+        return res.status(200).json(foundApi)
+      }
+      }
+  } 
+  catch (error) {
+    console.log(error.message);
   }
-}); 
+})
+
+
+
+
+
+
+
+
 
 //-----------ROUT TO DELETE-----VIDEOGAME{params}------->
 

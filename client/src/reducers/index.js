@@ -22,19 +22,12 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_VIDEOGAMES:
-      if (action.payload) {
-        console.log(action.payload);
+    
         return {
           ...state,
           videogames: action.payload,
           filter: action.payload,
           ubication: action.payload,
-        };
-      } else {
-        return {
-          ...state,
-          videogames: [],
-        };
       }
     case GET_BY_NAME:
       return {
@@ -125,7 +118,7 @@ export default function rootReducer(state = initialState, action) {
           }),
         };
       }
-      if (action.payload === "Lower") {
+      if (action.payload === "Low") {
         return {
           ...state,
           filters: [...state.filters].sort((prev, next) => {

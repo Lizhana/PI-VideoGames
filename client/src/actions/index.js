@@ -7,6 +7,7 @@ import {
   GET_VIDEOGAME_DETAILS, 
   ORDER_BY_NAME,
   ORDER_BY_RATING,
+  ADD_VIDEOGAME,
 
   General_Search,
   Details_Search,
@@ -17,10 +18,10 @@ import axios from "axios";
 export function getVideogames() {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${General_Search}`);
+      const res = await axios.get('http://localhost:3001/videogames');
       return dispatch({ type: GET_VIDEOGAMES, payload: res.data });
     } catch (err) {
-      return err;
+      console.log(err)
     }
   };
 };
@@ -29,7 +30,7 @@ export function getVideogames() {
 export function getVideogamesByName(name) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${General_Search}?name=${name}`);
+      const res = await axios.get(`http://localhost:3001/videogames?name=${name}`);
       return dispatch({ type: GET_BY_NAME, payload: res.data });
     } catch (err) {
       return err;
@@ -40,7 +41,7 @@ export function getVideogamesByName(name) {
 export function getVideogamesById(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${Details_Search}/${id}`);
+      const res = await axios.get(`http://localhost:3001/videogame/${id}`);
       return dispatch({
         type: GET_VIDEOGAME_DETAILS,
         payload: res.data,
@@ -69,7 +70,10 @@ export function postVideogame(payload) {
   return async function (dispatch) {
     try {
       const res = await axios.post(`${General_Search}`, payload)
-      return res;
+      return dispatch({
+        type: ADD_VIDEOGAME,
+        payload : res.data
+      })
     } catch (error) {
       console.log(error);
     }

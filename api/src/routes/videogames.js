@@ -80,12 +80,14 @@ router.get('/', async (req, res) => {
             platforms: platform,
           };
         });
+
         allGames = [...gamesDb, ...allGamesApi];
         apiVideogames = await axios.get(apiVideogames.data.next);
 
       }
       return res.status(200).json(allGames);
     } catch (error) {
+      
       console.log(error);
     }
   }
@@ -112,6 +114,7 @@ router.post('/', async (req, res) => {
     if(noRepeat) {
       return res.status(400).send(`There is already a ${name} videogame released in ${released}`)
     }
+
 
     let createvg = await Videogame.create({
       name,
