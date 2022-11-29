@@ -9,12 +9,21 @@ const { Videogame, Genre} = require('../db');
 
 router.get('/', async (req, res) => {
   const { name } = req.query;
+
   let dbVideogames = await Videogame.findAll({
-    include:  Genre
-  });
+    include: Genre 
+  }); 
+
+  dbVideogames = JSON.stringify(dbVideogames);
+  dbVideogames = JSON.parse(dbVideogames)
+  
+   dbVideogames = dbVideogames.reduce((aac ,el)=> aac.concat({
+    ...el,
+    genres: el.genres.map(g => g.name)
+   }), [])
 
   if (name) {
-    try {
+    try {  
       let vgNameBdReady = await dbVideogames.filter((game) =>
       game.name.toLowerCase().includes(name.toLowerCase())
       );
@@ -133,7 +142,9 @@ router.post('/', async (req, res) => {
     createvg.addGenre(vgNewGenre);
 
     return res.status(200).send(`The videogame ${name} has been created successfully`);
-  } catch (error) {
+
+  } 
+  catch (error) {
     console.log(error);
   }
 });

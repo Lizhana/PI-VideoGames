@@ -19,8 +19,9 @@ export default function Home() {
     const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage
     const currentVideogames = allVideogames.slice(indexOfFirstVideogame, indexOfLastVideogame)
 
+    
     const paginado = (pageNumber) => {   
-    setCurrentPage(pageNumber)
+        setCurrentPage(pageNumber)
     }
 
     useEffect(() => {
@@ -31,9 +32,13 @@ export default function Home() {
         dispatch(getVideogames())
     }, [dispatch]);
 
+   
+
+
     if(!allVideogames.length) {
         return ( <Loader/> )
     }
+    
 
     const handleClick = (event)=> {
         event.preventDefault();
@@ -72,7 +77,7 @@ export default function Home() {
 
 
         <div>
-            <Link to='/videogame'>Crea tu videojuego</Link>
+            <Link to='/crearvideogame'>Crea tu videojuego</Link>
             <div>
                 <button onClick={(event)=>{handleClick(event)}} >Reload</button>
             </div>

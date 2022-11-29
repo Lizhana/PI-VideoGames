@@ -15,8 +15,8 @@ router.get('/:id', async (req, res) => {
       let dbVideogame = await Videogame.findOne({
         where: {
           id: id,
-          include: [Genre]
         },
+        include: Genre
       });
       return res.status(200).json(dbVideogame);
     }

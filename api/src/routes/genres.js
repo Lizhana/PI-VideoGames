@@ -9,7 +9,10 @@ const{API_KEY} =process.env;
 
 router.get('/', async (req, res)=>{
 
+    try{
+
     const genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+
     const nameGenres = genresApi.data.results;
     
     nameGenres.forEach(async (g) => {
@@ -19,8 +22,12 @@ router.get('/', async (req, res)=>{
             }
         })
     });
+
     const allGenres = await Genre.findAll();
     res.status(200).json(allGenres)
+        } catch {
+            
+        }
 
 });
 

@@ -38,13 +38,19 @@ export function getVideogamesByName(name) {
   };
 };
 
+
 export function getVideogamesById(id) {
   return async function (dispatch) {
     try {
       const res = await axios.get(`http://localhost:3001/videogame/${id}`);
+
+      console.log(res.data)
+
       return dispatch({
         type: GET_VIDEOGAME_DETAILS,
         payload: res.data,
+
+
       });
     } catch (err) {
       console.log(err);

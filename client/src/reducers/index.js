@@ -13,7 +13,7 @@ import {
 
 const initialState = {
   videogames: [],
-  videogameDetails: {},
+  detail: {},
   genres: [],
   filters: [],
   ubication: [],
@@ -37,7 +37,7 @@ export default function rootReducer(state = initialState, action) {
     case GET_VIDEOGAME_DETAILS:
       return {
         ...state,
-        videogameDetails: action.payload,
+        detail: action.payload,
       };
     case GET_GENRES:
       let getGenre = action.payload;
@@ -64,6 +64,7 @@ export default function rootReducer(state = initialState, action) {
     case ADD_VIDEOGAME:
       return {
         ...state,
+        detail: action.payload
       };
     case DELETE_VIDEOGAME:
       return {
