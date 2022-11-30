@@ -11,7 +11,7 @@ try{
         <div>
 
             <Link to={`videogame/${id}`}    >
-            <img src={background_image} alt="imagen no disponible"/>
+            <img src={background_image ||" https://alfabetajuega.com/hero/2022/01/personajes-populares-videojuegos.webp?width=1200"} alt="imagen no disponible"/>
             <h4>{name}</h4>
             </Link>
             <p>Genero: {genres.join(', ')}</p>

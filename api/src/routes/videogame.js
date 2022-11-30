@@ -4,6 +4,7 @@ const router = Router();
 const axios = require('axios');
 const {Videogame, Genre} = require('../db');
 const { where } = require('sequelize');
+const db = require('../db');
 const {API_KEY} = process.env;
 
 //-----------ROUT TO GET-----VIDEOGAME:Params------->
@@ -12,14 +13,42 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     if (id.length > 10) {
-      let dbVideogame = await Videogame.findOne({
-        where: {
-          id: id,
-        },
-        include: Genre
-      });
-      return res.status(200).json(dbVideogame);
-    }
+      // let dbVideogame = await Videogame.findOne({
+      //   where: {
+      //     id: id,
+      //   },
+      //   include: Genre
+      // });
+
+      var searchdbvg  = await Videogame.findByPk(id, {
+        include: [{
+           model: Genre,
+           attributes: ['name'],
+           through: {
+             attributes: []
+           }
+        }]
+    });
+     
+    if (searchdbvg) {
+       let genrestr=[]
+       for (let i=0;i<searchdbvg.genres.length;i++) {
+           genrestr.push(searchdbvg.genres[i].name)
+       }
+       const objdbgame = {
+          name: searchdbvg.name,
+          platforms: searchdbvg.platforms, //platform
+          released: searchdbvg.released, //reldate
+          background_image: "https://alfabetajuega.com/hero/2022/01/personajes-populares-videojuegos.webp?width=1200",
+          description: searchdbvg.description,
+          rating: searchdbvg.rating,
+          genres: genrestr.toString()
+       }
+       return res.status(200).json(objdbgame)
+  
+          //return res.status(200).json(dbVideogame)
+        }
+      }
      else 
     {
       const game = await axios.get(
