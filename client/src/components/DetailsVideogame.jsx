@@ -33,8 +33,7 @@ export default function DetailsVideogame() {
                 <h1>Nombre: {detail.name}</h1>
                 <p >Released: {detail.released}</p>
                 <p className="platforms_detail">
-                    Platforms:  
-                    {detail.platforms}
+                    Platforms: {detail.platforms}
                 </p>
                 <p className="genres_detail">Genres: {detail.genres}</p>
                 <p className="rating_detail">Rating: {detail.rating}</p>

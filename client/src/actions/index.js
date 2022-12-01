@@ -19,6 +19,8 @@ export function getVideogames() {
   return async function (dispatch) {
     try {
       const res = await axios.get('http://localhost:3001/videogames');
+
+      console.log(res.data);
       return dispatch({ type: GET_VIDEOGAMES, payload: res.data });
     } catch (err) {
       console.log(err)
