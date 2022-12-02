@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,19 +12,18 @@ export default function Home() {
 
    const dispatch = useDispatch()
    const allVideogames = useSelector((state)=> state.videogames) 
-   const [currentPage, setCurrentPage] = useState(1) 
-    const [videogamesPerPage] = useState(15)
-    const [, setOrder] = useState('') 
-    
+   const [currentPage, setCurrentPage] = useState(1)
+    const [videogamesPerPage, setVideogamesPerPage] = useState(15)
     const indexOfLastVideogame = currentPage * videogamesPerPage
     const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage
     const currentVideogames = allVideogames.slice(indexOfFirstVideogame, indexOfLastVideogame)
-
+    const [order, setOrder] = useState('') 
+    
     
     const paginado = (pageNumber) => {   
         setCurrentPage(pageNumber)
     }
-
+    
     useEffect(() => {
         dispatch(getGenres())
     }, [dispatch]);
@@ -81,13 +81,21 @@ export default function Home() {
             <div>
                 <button onClick={(event)=>{handleClick(event)}} >Reload</button>
             </div>
-            <div>
+            <div> 
                 <NavBar
                 handleSort= {handleSort}
                 handleRating = {handleRating}
                 handleGenreFilter = {handleGenreFilter}
                 handleUbicationFilter ={handleUbicationFilter}
                 />
+                
+            </div>
+            <div><hr />
+                {/* <Paginated 
+                videogamesPerPage = {videogamesPerPage}
+                videogames = {allVideogames.length}
+                paginado = {paginado} /> */}
+<hr />
             </div>
             <ul>
                 {currentVideogames?.map((g) => {
@@ -105,13 +113,7 @@ export default function Home() {
                 })}
             </ul>
 
-            <div>
-                <Paginated 
-                videogamesPerPage = {videogamesPerPage}
-                videogames = {allVideogames.length}
-                paginado = {paginado} />
-
-            </div>
+           
 
         </div>
     )

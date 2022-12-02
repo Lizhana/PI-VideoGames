@@ -44,6 +44,7 @@ router.get("/", async (req, res) => {
           for (let i = 0; i < game.platforms.length; i++) {
             platform.push(game.platforms[i].platform.name);
           }
+          
         }
         return {
           id: game.id,
@@ -74,7 +75,7 @@ router.get("/", async (req, res) => {
       let gamesDb = [...dbVideogames];
       let videogamesApi = [];
       let apiVideogames = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=1`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=3`
       );
       let allGamesApi = apiVideogames.data.results.map((game) => {
         let platform = [];
@@ -82,6 +83,7 @@ router.get("/", async (req, res) => {
           for (let i = 0; i < game.platforms.length; i++) {
             platform.push(game.platforms[i].platform.name);
           }
+          
         }
         return {
           id: game.id,
@@ -117,7 +119,74 @@ router.get("/", async (req, res) => {
         };
       });
 
-      let gamesAllApi = allGamesApi.concat(allGamesApiB);
+      let apiVideogamesC = await axios.get(
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=4`
+      );
+      let allGamesApiC = apiVideogamesC.data.results.map((game) => {
+        let platform = [];
+        if (game.platforms) {
+          for (let i = 0; i < game.platforms.length; i++) {
+            platform.push(game.platforms[i].platform.name);
+          }
+        }
+        return {
+          id: game.id,
+          background_image: game.background_image,
+          name: game.name,
+          genres: game.genres?.map((g) => g.name),
+          description: game.description_raw,
+          released: game.released,
+          rating: game.rating,
+          platforms: platform,
+        };
+      });
+
+      let apiVideogamesD = await axios.get(
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=5`
+      );
+      let allGamesApiD = apiVideogamesD.data.results.map((game) => {
+        let platform = [];
+        if (game.platforms) {
+          for (let i = 0; i < game.platforms.length; i++) {
+            platform.push(game.platforms[i].platform.name);
+          }
+        }
+        return {
+          id: game.id,
+          background_image: game.background_image,
+          name: game.name,
+          genres: game.genres?.map((g) => g.name),
+          description: game.description_raw,
+          released: game.released,
+          rating: game.rating,
+          platforms: platform,
+        };
+      });
+
+      let apiVideogamesE = await axios.get(
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=6`
+      );
+      let allGamesApiE = apiVideogamesE.data.results.map((game) => {
+        let platform = [];
+        if (game.platforms) {
+          for (let i = 0; i < game.platforms.length; i++) {
+            platform.push(game.platforms[i].platform.name);
+          }
+        }
+        return {
+          id: game.id,
+          background_image: game.background_image,
+          name: game.name,
+          genres: game.genres?.map((g) => g.name),
+          description: game.description_raw,
+          released: game.released,
+          rating: game.rating,
+          platforms: platform,
+        };
+      });
+     
+
+      let gamesAllApi = allGamesApi.concat(allGamesApiB, allGamesApiC, allGamesApiD, allGamesApiE);
 
 
       videogamesApi.push(gamesAllApi);
@@ -149,7 +218,7 @@ router.post("/", async (req, res) => {
   } = req.body;
 
   try {
-    if (!name || !description || !platforms || !genres) {
+    if (!name || !platforms || !genres) {
       return res.status(400).send("Mandatory data missing");
     }
 

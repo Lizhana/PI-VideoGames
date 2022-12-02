@@ -12,7 +12,7 @@ export default function NavBar({handleSort,
     return (
         <div>
             <div className="navbar_container">
-            <Search/>
+            <Search />
             </div>
 
             <div>
@@ -29,9 +29,9 @@ export default function NavBar({handleSort,
             </select> 
 
             <select className="select" onChange={(e) => handleUbicationFilter(e)}> 
-                    <option>Games</option>
-                    <option value='genreIncluded'>genreIncluded</option>
-                    <option value='DB'>DB</option>
+                    
+                    <option value='All'>Todos</option>
+                    <option value='DataBase'>Base De Datos</option>
                     <option value='API'>Existent</option>
             </select>        
             

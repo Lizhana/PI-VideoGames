@@ -64,6 +64,8 @@ router.get('/:id', async (req, res) => {
               platformstr.push(' '+game.data.platforms[i].platform.name)
             } 
 
+           
+
         const foundApi = {
           id: game.data.id,
           background_image: game.data.background_image,

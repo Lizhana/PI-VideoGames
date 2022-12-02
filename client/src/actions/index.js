@@ -7,7 +7,6 @@ import {
   GET_VIDEOGAME_DETAILS, 
   ORDER_BY_NAME,
   ORDER_BY_RATING,
-  ADD_VIDEOGAME,
 
   General_Search,
   Details_Search,
@@ -20,7 +19,6 @@ export function getVideogames() {
     try {
       const res = await axios.get('http://localhost:3001/videogames');
 
-      console.log(res.data);
       return dispatch({ type: GET_VIDEOGAMES, payload: res.data });
     } catch (err) {
       console.log(err)
@@ -76,11 +74,12 @@ export function getGenres() {
 export function postVideogame(payload) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`${General_Search}`, payload)
-      return dispatch({
-        type: ADD_VIDEOGAME,
-        payload : res.data
-      })
+      var res = await axios.post(`${General_Search}`, payload)
+      return res
+      // dispatch({
+      //   type: ADD_VIDEOGAME,
+      //   payload : res.data
+      // })
     } catch (error) {
       console.log(error);
     }

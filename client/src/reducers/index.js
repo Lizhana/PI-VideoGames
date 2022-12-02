@@ -26,7 +26,7 @@ export default function rootReducer(state = initialState, action) {
         return {
           ...state,
           videogames: action.payload,
-          filter: action.payload,
+          filters: action.payload,
           ubication: action.payload,
       }
     case GET_BY_NAME:
@@ -72,67 +72,48 @@ export default function rootReducer(state = initialState, action) {
       };
     case FILTER_BY_UBICATION:
       let ubication = state.ubication;
-      let ubicationFilter =
-        action.payload === "DB"
-          ? ubication.filter((v) => v.origin === "DB")
-          : ubication.filter((v) => v.origin === "API");
+      const ubicationFilter = action.payload === "DataBase"? ubication.filter((elemento) => elemento.createdInDb === true) : ubication.filter((elemento)=> elemento.createdInDb === false)
+      
       return {
-        ...state,
+         ...state,
         videogames:
-          action.payload === "genreIncluded"
-            ? state.ubication
-            : ubicationFilter,
+         action.payload === "All" ? state.ubication : ubicationFilter,
       };
     case ORDER_BY_NAME:
-      if (action.payload === "A-Z") {
-        return {
-          ...state,
-          filters: [...state.filters].sort((prev, next) => {
-            if (prev.name > next.name) return 1;
-            if (prev.name < next.name) return -1;
+      let sortName = state.filters
+      action.payload === "A-Z" ? sortName.sort(function (a, b) {
+         if (a.name.toUpperCase() > b.name.toUpperCase())  return 1
+            if (b.name.toUpperCase() > a.name.toUpperCase()) return -1
             return 0;
-          }),
-        };
-      }
-      if (action.payload === "Z-A") {
-        return {
-          ...state,
-          filters: [...state.filters].sort((prev, next) => {
-            if (prev.name > next.name) return -1;
-            if (prev.name < next.name) return 1;
-            return 0;
-          }),
-        };
-      }
-
+          })
+        : sortName.sort(function (a, b) {
+          if (a.name.toUpperCase() > b.name.toUpperCase())  return -1
+          if (b.name.toUpperCase() > a.name.toUpperCase()) return 1
+             return 0;
+           });
       return {
         ...state,
+        filters: sortName,
       };
     case ORDER_BY_RATING:
-      if (action.payload === "Top") {
-        return {
-          ...state,
-          filters: [...state.filters].sort((prev, next) => {
-            if (prev.rating > next.rating) return 1;
-            if (prev.rating > next.rating) return -1;
-            return 0;
-          }),
-        };
-      }
-      if (action.payload === "Low") {
-        return {
-          ...state,
-          filters: [...state.filters].sort((prev, next) => {
-            if (prev.rating > next.rating) return -1;
-            if (prev.rating > next.rating) return 1;
-            return 0;
-          }),
-        };
-      }
+      let sortRat = state.filters
+      action.payload === "Top"? sortRat.sort(function(a, b) {
+        if (parseInt(a.rating) > parseInt(b.rating) ) return -1
+        if (parseInt(a.rating) < parseInt(b.rating) )return 1
+        return 0
+      })
+      : sortRat.sort(function(a, b) {
+        if (parseInt(a.rating) > parseInt(b.rating) ) return 1
+        if (parseInt(a.rating) < parseInt(b.rating) )return -1
+        return 0
+      })
+    
       return {
         ...state,
-      };
+        filters: sortRat
+    };
     default:
+
       return state;
   }
 }
