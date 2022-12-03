@@ -76,10 +76,6 @@ export function postVideogame(payload) {
     try {
       var res = await axios.post(`${General_Search}`, payload)
       return res
-      // dispatch({
-      //   type: ADD_VIDEOGAME,
-      //   payload : res.data
-      // })
     } catch (error) {
       console.log(error);
     }
@@ -87,9 +83,9 @@ export function postVideogame(payload) {
 };
 
 export function deleteVideogame(id) {
-  return async function (dispatch) {
+  return async function () {
     try {
-      const res = await axios.delete(`${Details_Search}/${id}`)
+      let res = await axios.delete(`${Details_Search}/${id}`)
       return res;
     } catch (error) {
       console.log(error);

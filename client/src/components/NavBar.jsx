@@ -9,13 +9,15 @@ export default function NavBar({handleSort,
 
         const genreIncludedGenre = useSelector(state => state.genres);
 
+        
+
     return (
-        <div>
-            <div className="navbar_container">
-            <Search />
+        <div >
+            <div>
+            <Search  />
             </div>
 
-            <div>
+            <div key={genreIncludedGenre.id}>
             <select className="select" onChange={(e) => handleSort(e)}>
                     <option>Order</option>
                     <option value='A-Z'>A-Z</option>
@@ -41,7 +43,7 @@ export default function NavBar({handleSort,
                     <option value='genreIncluded'>genreIncluded</option> 
 
                     {genreIncludedGenre.map((genre) => (
-                        <option key={genre.name} value={genre.name}>
+                        <option key={genre.id} value={genre.name}>
                             {genre.name}
                         </option>
                     ))}

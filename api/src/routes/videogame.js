@@ -13,12 +13,7 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     if (id.length > 10) {
-      // let dbVideogame = await Videogame.findOne({
-      //   where: {
-      //     id: id,
-      //   },
-      //   include: Genre
-      // });
+      
 
       var searchdbvg  = await Videogame.findByPk(id, {
         include: [{
@@ -36,6 +31,7 @@ router.get('/:id', async (req, res) => {
            genrestr.push(searchdbvg.genres[i].name)
        }
        const objdbgame = {
+          id: searchdbvg.id,
           name: searchdbvg.name,
           platforms: searchdbvg.platforms, //platform
           released: searchdbvg.released, //reldate
@@ -45,8 +41,7 @@ router.get('/:id', async (req, res) => {
           genres: genrestr.toString()
        }
        return res.status(200).json(objdbgame)
-  
-          //return res.status(200).json(dbVideogame)
+
         }
       }
      else 
@@ -63,8 +58,6 @@ router.get('/:id', async (req, res) => {
             for (i=0;i<game.data.platforms.length;i++) {
               platformstr.push(' '+game.data.platforms[i].platform.name)
             } 
-
-           
 
         const foundApi = {
           id: game.data.id,
@@ -95,21 +88,20 @@ router.get('/:id', async (req, res) => {
 //-----------ROUT TO DELETE-----VIDEOGAME{params}------->
 
 router.delete('/:id', async (req, res) => {
-  const { idDelete } = req.params;
-  console.log(idDelete);
+  const { id } = req.params;
+ 
   try {
-    if (idDelete.length < 10) {
+    if (id.length < 10) {
       return res.status(400).send('The videogame cannot be deleted');
     } else {
-      const videoGameDelete = await Videogame.findOne({
-        where: { id: idDelete },
-      });
+      let videoGameDelete = await Videogame.findByPk(id);
       videoGameDelete.destroy();
       res.status(200).send('Deleted Videogame');
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
+
 });
 
 //-----------ROUT TO PUT-----VIDEOGAME{body}------->

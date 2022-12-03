@@ -69,10 +69,11 @@ export default function rootReducer(state = initialState, action) {
     case DELETE_VIDEOGAME:
       return {
         ...state,
+        videogames: action.payload
       };
     case FILTER_BY_UBICATION:
       let ubication = state.ubication;
-      const ubicationFilter = action.payload === "DataBase"? ubication.filter((elemento) => elemento.createdInDb === true) : ubication.filter((elemento)=> elemento.createdInDb === false)
+      const ubicationFilter = action.payload === "DataBase"? ubication.filter((elemento) => elemento.createdInDb === true) : ubication.filter((elemento)=> !elemento.createdInDb)
       
       return {
          ...state,

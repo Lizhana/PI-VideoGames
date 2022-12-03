@@ -11,21 +11,37 @@ import Paginated from './Paginated';
 export default function Home() {
 
    const dispatch = useDispatch()
-   const allVideogames = useSelector((state)=> state.videogames) 
+   let allVideogames = useSelector((state)=> state.videogames) 
+
    const [currentPage, setCurrentPage] = useState(1)
+ 
     const [videogamesPerPage, setVideogamesPerPage] = useState(15)
+  
     const indexOfLastVideogame = currentPage * videogamesPerPage
+
+
     const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage
+   
     const currentVideogames = allVideogames.slice(indexOfFirstVideogame, indexOfLastVideogame)
+
+  
+
     const [order, setOrder] = useState('') 
+
+
     
     
     const paginado = (pageNumber) => {   
+        if(pageNumber < 1 || pageNumber > 7){
+            
+        } else {
         setCurrentPage(pageNumber)
+    }
     }
     
     useEffect(() => {
         dispatch(getGenres())
+        
     }, [dispatch]);
 
     useEffect(()=> {
@@ -78,9 +94,6 @@ export default function Home() {
 
         <div>
             <Link to='/crearvideogame'>Crea tu videojuego</Link>
-            <div>
-                <button onClick={(event)=>{handleClick(event)}} >Reload</button>
-            </div>
             <div> 
                 <NavBar
                 handleSort= {handleSort}
@@ -90,13 +103,13 @@ export default function Home() {
                 />
                 
             </div>
-            <div><hr />
-                {/* <Paginated 
-                videogamesPerPage = {videogamesPerPage}
-                videogames = {allVideogames.length}
-                paginado = {paginado} /> */}
-<hr />
-            </div>
+
+                <Paginated 
+                videogamesPerPage ={videogamesPerPage}
+                allVideogames ={allVideogames.length}
+                paginado ={paginado}
+                currentPage ={currentPage} />
+         
             <ul>
                 {currentVideogames?.map((g) => {
                     return (
@@ -108,13 +121,16 @@ export default function Home() {
                         rating = {g.rating}
                         platforms = {g.platform}
                         key = {g.id} />
-                    );
-
-                })}
+                        );
+                        
+                    })}
             </ul>
 
            
+            <div>
 
+                <button onClick={(event)=>{handleClick(event)}} >Reload</button>
+            </div>
         </div>
     )
 }
