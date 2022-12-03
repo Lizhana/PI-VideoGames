@@ -1,4 +1,76 @@
 
 .landing{
-    background-color: brown;
+    height: 100vh;
+    margin-top: 0px;
+    padding: 0;
+    text-align: center;
+    border-color: rgb(216, 23, 23);
+    margin-top: 10px;
+    border-style: solid;
+    padding: 16px 32px;
+
+}
+
+.title{
+    margin: 0px auto;
+    height: 100px;
+}
+h1{
+    display: block;
+    font-weight: 200;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px ; 
+    text-shadow: 0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa; ;
+}
+button{
+    background: rgb(13, 160, 111);
+    cursor:pointer;
+    border: none;
+    padding: 16px 32px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+
+}
+button::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    z-index: -1;
+    width: 110%;
+    height: 120%;
+    background: linear-gradient(
+        45deg, 
+        red, blue, deeppink, blue, red, blue, deeppink, blue
+    );
+    background-size: 800%;
+    border-radius: 10px;
+    filter: blur(5px);
+    animation: glowing 20s linear infinite;
+    
+}
+img{
+    height: 200px;
+}
+
+@keyframes glowing {
+    0%{
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
 }
