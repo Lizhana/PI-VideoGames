@@ -120,3 +120,25 @@ export function orderByRating(payload) {
     payload
   }
 };
+
+export function PostUser(payload) {
+  return async function (dispatch) {
+    try {
+      var res = await axios.post("http://localhost:3001/user", payload)
+      return res
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export function GetUser() {
+  return async function (dispatch) {
+    try {
+      var res = await axios.get("http://localhost:3001/user")
+      return dispatch({ type: "GET_USER", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

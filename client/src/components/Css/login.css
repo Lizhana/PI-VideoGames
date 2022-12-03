@@ -1,0 +1,54 @@
+
+.body{
+    color: #fff;
+    font-family: monospace, serif;
+    letter-spacing: 0.05em;
+    background:  url("https://cdn-3.expansion.mx/dims4/default/5fd17a8/2147483647/strip/true/crop/3864x2576+0+0/resize/1200x800!/format/webp/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F33%2F38%2F425ea19f487680315036da9ef5f3%2Fistock-1334436084.jpg") no-repeat fixed center center;
+    background-size: cover;
+}
+
+
+.encabezado{
+  text-align: center;
+  border: rgb(117, 49, 49) 5px solid;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+    width: 99%;
+background-color: rgba(5, 5, 5, 0.864);
+}
+.login{
+  width: 320px;
+  padding: 20px;
+  border-radius: 5px;
+  border-top: 5px solid #ff656c;
+  border-left: 5px solid #ff656c;
+  margin: 0 auto;
+    }
+.inputm{
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: rgba(17, 17, 18, 0.715);
+  color: #fff;
+  font-family: monospace, serif;
+  letter-spacing: 0.05em;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.btn {
+  width: 100px;
+  display: block;
+  justify-content: center;
+  padding: 14px 16px;
+  background: rgba(6, 6, 18, 0.906);
+  border: 10;
+  border-color: #ff656d8e;
+  color: #fff;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 16px;
+  }
+  

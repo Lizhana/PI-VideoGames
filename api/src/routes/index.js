@@ -6,6 +6,7 @@ const router = Router();
 const videogames = require('./videogames');
 const videogame = require('./videogame');
 const genres = require('./genres');
+const users = require('./users')
 // Ejemplo: const authRouter = require('./auth.js');
 
 
@@ -14,6 +15,7 @@ const genres = require('./genres');
 router.use('/videogames', videogames);
 router.use('/videogame', videogame);
 router.use('/genres', genres);
+router.use('/user', users ) 
 // Ejemplo: router.use('/auth', authRouter);
 
 

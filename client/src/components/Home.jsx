@@ -93,7 +93,14 @@ export default function Home() {
 
 
         <div>
-            <Link to='/crearvideogame'>Crea tu videojuego</Link>
+            <Link to='/createvideogame'>
+                <button> Crea tu videojuego</button>
+            </Link>
+
+            <Link to="/">
+            <button>Log Out</button>
+            
+            </Link>
             <div> 
                 <NavBar
                 handleSort= {handleSort}

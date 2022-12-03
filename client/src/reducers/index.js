@@ -17,6 +17,7 @@ const initialState = {
   genres: [],
   filters: [],
   ubication: [],
+  users:[]
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -112,7 +113,18 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         filters: sortRat
-    };
+    }
+    case "POST_USER":
+      return {
+        ...state,
+        user: action.payload
+      };
+
+      case "GET_USER":
+        return {
+          ...state,
+          user: action.payload
+        };
     default:
 
       return state;
