@@ -1,0 +1,33 @@
+
+
+.dropdownmenu ul, .dropdownmenu li {
+	margin: 0;
+	padding: 0;
+}
+.dropdownmenu ul {
+	background: rgb(160, 53, 53);
+	list-style: none;
+	width: 110%;
+}
+.dropdownmenu li {
+	float:left;
+	position: relative;
+	width:10%;
+}
+.dropdownmenu a {
+	background: #30a6e667;
+	color: #FFFFFF;
+	display: block;
+	font: bold 12px/20px sans-serif;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
+.dropdownmenu li:hover a {
+	background: #000000;
+}

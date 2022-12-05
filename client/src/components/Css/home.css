@@ -1,0 +1,23 @@
+.home{
+background-image: url('../imagenes/home.jpg');
+color: beige;
+background-size: 100%;
+display: inline-block;
+}
+
+.create{
+    background-color: brown;
+}
+.create, button{
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 20px;
+    font-family: cursive;
+    border-color: aqua;
+    background-color: rgba(0, 0, 0, 0.59);
+    color: antiquewhite;
+   
+}
+
+
+

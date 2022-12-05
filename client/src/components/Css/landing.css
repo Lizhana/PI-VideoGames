@@ -5,9 +5,8 @@
     padding: 0;
     text-align: center;
     border-color: rgb(216, 23, 23);
-    margin-top: 10px;
-    border-style: solid;
-    padding: 16px 32px;
+   background-image: url('../imagenes/videojuegos_1920x1080.jpg');
+   background-size: cover;
 
 }
 
@@ -29,7 +28,7 @@ h1{
     0 0 102px #0fa,
     0 0 151px #0fa; ;
 }
-button{
+.buttonLan{
     background: rgb(13, 160, 111);
     cursor:pointer;
     border: none;
@@ -41,7 +40,7 @@ button{
     border-radius: 12px;
 
 }
-button::before{
+/* .buttonLan::before{
     content: '';
     position: absolute;
     top: -5px;
@@ -58,10 +57,7 @@ button::before{
     filter: blur(5px);
     animation: glowing 20s linear infinite;
     
-}
-img{
-    height: 200px;
-}
+} */
 
 @keyframes glowing {
     0%{

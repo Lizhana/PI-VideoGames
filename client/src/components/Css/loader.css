@@ -1,0 +1,13 @@
+.loader{
+  height: 100vh;
+  width: 100%;
+  margin-left: auto;
+  background-image: url('../imagenes/videojuegos_1920x1080.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+.loaderi{
+   margin-top: 100px;
+  margin-left: -350px;
+}

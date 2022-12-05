@@ -1,0 +1,17 @@
+.select{
+  background-image: url(../imagenes/min.webp);
+   display: inline;
+    background-size: 130px;
+    background-repeat: no-repeat;
+    background-position: 100px;
+}
+
+select{
+    border-radius: 4px;
+    padding: 3px;
+    font-size: 10px;
+    font-family: cursive;
+    border-color: aqua;
+    background-color: rgba(0, 0, 0, 0.59);
+    color: antiquewhite;
+}

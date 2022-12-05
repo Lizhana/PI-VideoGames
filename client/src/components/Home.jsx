@@ -7,6 +7,7 @@ import CardVideogame from "./CardVideogame";
 import NavBar from './NavBar';
 import Loader from './Loader';
 import Paginated from './Paginated';
+import './Css/home.css'
 
 export default function Home() {
 
@@ -54,12 +55,6 @@ export default function Home() {
     if(!allVideogames.length) {
         return ( <Loader/> )
     }
-    
-
-    const handleClick = (event)=> {
-        event.preventDefault();
-        dispatch(getVideogames())
-    }
 
     const handleSort = (event)=> {
         event.preventDefault();
@@ -92,32 +87,29 @@ export default function Home() {
     return (
 
 
-        <div>
-            <Link to='/createvideogame'>
-                <button> Crea tu videojuego</button>
-            </Link>
-
-            <Link to="/">
-            <button>Log Out</button>
+        <div className="home">
             
-            </Link>
+
             <div> 
                 <NavBar
                 handleSort= {handleSort}
                 handleRating = {handleRating}
                 handleGenreFilter = {handleGenreFilter}
                 handleUbicationFilter ={handleUbicationFilter}
-                />
-                
+                />     
             </div>
-
+            <div>
+        <div  >
                 <Paginated 
                 videogamesPerPage ={videogamesPerPage}
                 allVideogames ={allVideogames.length}
                 paginado ={paginado}
                 currentPage ={currentPage} />
-         
-            <ul>
+                </div>
+         <div className="divcardhome" >
+            <div className="divcardhome2" >
+                <hr />
+            <ul className="card"> <li> <a href="des">
                 {currentVideogames?.map((g) => {
                     return (
                         <CardVideogame 
@@ -131,12 +123,18 @@ export default function Home() {
                         );
                         
                     })}
-            </ul>
+          </a> </li> </ul></div>
+            </div >
+            <div className="create" >
+            <Link to='/createvideogame'>
+                <button> Create your videogame</button>
+            </Link>
+            
 
-           
-            <div>
-
-                <button onClick={(event)=>{handleClick(event)}} >Reload</button>
+            <Link to="/">
+            <button>Log Out</button> 
+            </Link>
+            </div>
             </div>
         </div>
     )

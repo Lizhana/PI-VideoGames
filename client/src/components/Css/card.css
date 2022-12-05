@@ -1,0 +1,61 @@
+.cards{
+  
+    display:inline-block;
+    height: 330px ;
+    width: 210px;
+    border-radius: 5px;
+    background: #090909de;
+    text-align: center;
+    padding: 0px;
+    margin: 10px;
+    border-radius: 10px;
+    border-color: rgb(18, 207, 46);
+    border-style: double;
+    box-shadow: -10px -5px 5px rgb(221, 200, 216)
+}
+.cards:hover {
+    transform: scale(1.15);
+    cursor: pointer;
+    box-shadow: 0 5px 20px 0 #eee;
+    animation: boxshadow 500ms linear infinite;
+  }
+  .imgcard{
+    width: 190px;
+    height: 145px;
+    margin-top: 10px;
+  }
+h2{
+  font-size: 20px;
+  text-shadow: 0 0 7px rgb(231, 12, 12),
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+
+  h3{
+text-align: center; 
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+font-size: 14px; 
+color: #0e0f0efb; 
+text-shadow: -1px 0 #e00c0cdd, 0 1px #e80505, 1px 0 #cb12b88f, 0 -1px #e90707, -2px 2px 0 #031132, 2px 2px 0 #414D68, 1px 1px #3160cd
+  }
+
+  ul{
+    list-style: none;
+  }
+
+
+
+  @keyframes boxshadow {
+  
+    0%{box-shadow:inset 0 5px 10px 0 rgb(226, 239, 47);}
+    25%{box-shadow:inset -5px 0 10px 0 #eee;}
+    50%{box-shadow:inset 0 -5px 10px 0 rgb(102, 14, 211);}
+    75%{box-shadow:inset 5px 0 10px 0 #eee;}
+    100%{box-shadow:inset 0 5px 10px 0 #eee;}
+  }

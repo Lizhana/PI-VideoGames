@@ -1,0 +1,26 @@
+.search{
+    position: relative;
+    left: 23%;
+    background-color:transparent;
+    border-radius: 5px;
+    border-color:  rgb(13, 160, 111);
+    font-weight: 150px;
+    text-align: center;
+    caret-color: rgb(218, 21, 224);
+    color: rgb(40, 187, 138);
+
+}
+
+.bot{
+    background: rgb(13, 160, 111);
+    cursor:pointer;
+    border: none;
+    padding: 3px 12px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+    left: 25%;
+}
+

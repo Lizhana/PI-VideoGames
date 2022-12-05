@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Search from "./Search";
+import './Css/navbar.css'
 
 
 
@@ -12,28 +13,25 @@ export default function NavBar({handleSort,
         
 
     return (
-        <div >
-            <div>
-            <Search  />
-            </div>
+        <div className="selectdiv">
 
-            <div key={genreIncludedGenre.id}>
+            <div key={genreIncludedGenre.id} className='btn-select' >
             <select className="select" onChange={(e) => handleSort(e)}>
                     <option>Order</option>
-                    <option value='A-Z'>A-Z</option>
+                    <option value='A-Z' >A-Z</option>
                     <option value='Z-A'>Z-A</option>
             </select>
 
             <select className="select" onChange={(e) => handleRating(e)}>
                     <option>Rating</option>
-                    <option value="Top">Rating Top</option>
-                    <option value="Low">Rating Low</option>
+                    <option value="Top"> Top</option>
+                    <option value="Low"> Low</option>
             </select> 
 
             <select className="select" onChange={(e) => handleUbicationFilter(e)}> 
                     
-                    <option value='All'>Todos</option>
-                    <option value='DataBase'>Base De Datos</option>
+                    <option value='All'>All</option>
+                    <option value='DataBase'>Data Base</option>
                     <option value='API'>Existent</option>
             </select>        
             
@@ -48,6 +46,10 @@ export default function NavBar({handleSort,
                         </option>
                     ))}
             </select>
+            <div>
+                
+            <Search  />
+            </div>
         </div>
     </div>
   )

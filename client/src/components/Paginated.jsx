@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import './Css/paginad.css'
 
 export default function Paginated({
   videogamesPerPage,
@@ -15,17 +17,31 @@ export default function Paginated({
     pageNumbers.push(i + 1);
   }
   return (
-    <nav>
-      
-      <button onClick={()=> paginado(currentPage-1)} >Prev</button>
-        {pageNumbers &&
-          pageNumbers.map((num) => (
-            <p className="paginado" key={num}>
-              <button  onClick={() => paginado(num)}>{num}</button>
-            </p>  ))
-          }
-          <button onClick={()=> paginado(currentPage+1)} >Sig</button>
-      
-    </nav>
+    <div>
+      <nav className="dropdownmenu">
+        <ul>
+          <li onClick={() => paginado(currentPage -1)}>
+            <a >Prev</a>
+          </li>
+          {pageNumbers &&
+            pageNumbers.map((num) => (
+              <li key={num}>
+                <li onClick={() => paginado(num)}>
+                 
+                  <a>{num}</a>
+                </li>
+              </li>
+            ))}
+          <li onClick={() => paginado(currentPage +1)}>
+           
+            <a > Next </a>
+          </li>
+        </ul>
+        <hr />
+        <hr />
+        <hr />
+        <hr />
+      </nav>
+    </div>
   );
 }

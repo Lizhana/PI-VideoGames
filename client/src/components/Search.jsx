@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from 'react-redux'
 import { getVideogamesByName } from "../actions";
+import './Css/search.css'
 
 export default function Search() {
     const dispatch = useDispatch()
@@ -30,9 +31,12 @@ export default function Search() {
     }
 
     return (
-        <div>
-            <input type='text' placeholder="Videojuego..." onChange={handleInput} value={name} onKeyPress={enter}/>
-            <button type="submit" onClick={handleSubmit} >Buscar</button>
+        <div  >
+            <input type='text' placeholder="Videogame..." onChange={handleInput} value={name} onKeyPress={enter} className="search" />
+
+            <button type="submit" onClick={handleSubmit} 
+            className='bot'
+            >Search</button>
 
         </div>
     )
