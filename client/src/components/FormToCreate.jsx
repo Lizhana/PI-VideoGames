@@ -40,7 +40,7 @@ export default function FormTocreate() {
       <h1 className="hform" >Create your Videogame</h1>
       <form onSubmit={handleSubmit(validate)} className="form">
         <label>Name: </label>
-        <input className="inpForm" type="text" {...register("name")} />
+        <input className="inpForm" type="text" {...register("name")} autoComplete="off" />
         <br />
         <label>Description: </label>
         <textarea
@@ -50,7 +50,7 @@ export default function FormTocreate() {
         />
         <br />
         <label>Release Date: </label>
-        <input className="inpForm" type="date" {...register("released")} />
+        <input className="inpForm" type="date" {...register("released")} autoComplete="off" />
         <br />
         <label>Rating: </label>
         <input
@@ -58,6 +58,7 @@ export default function FormTocreate() {
           type="number"
           step="0.01"
           {...register("rating")}
+          autoComplete="off"
         />
         <br />
         <label>Platforms: </label>
@@ -65,12 +66,13 @@ export default function FormTocreate() {
           type="text"
           {...register("platforms")}
           placeholder="ej: Xbox 360, Android..."
+          autoComplete="off"
         />
         <br />
         <br />
         
         <div className="container">
-          <label>Genres: *</label>
+          <label> <strong> Genres: </strong></label>
           <ul className="ks-cboxtags">
           <li>  <input
               type="checkbox"
@@ -203,7 +205,6 @@ export default function FormTocreate() {
       <Link to="/home">
         <div>Back to Home</div>
       </Link>
-      <p> * indica campos obligatorios</p>
     </div>
     </div>
   );
