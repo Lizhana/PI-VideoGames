@@ -202,10 +202,10 @@ export default function FormTocreate() {
           </ul>
         </div>
       </form>
+      </div>
       <Link to="/home">
-        <div>Back to Home</div>
+       Back to Home
       </Link>
-    </div>
     </div>
   );
 }

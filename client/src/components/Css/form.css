@@ -1,8 +1,10 @@
 .divform{
   justify-content: center;
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif 'Arial Narrow', Arial, sans-serif;
- color: #b513e7;
+ color: #f4f3f3;
  border: 5px solid #ac25d5;
+ background-image: url('../imagenes/MVU-.jpg');
+background-size: cover;
 
 
 }
@@ -45,9 +47,9 @@ ul.ks-cboxtags li{
  
 }
 ul.ks-cboxtags li label{
-    background-color: rgba(255, 255, 255, 0.662);
-    border: 2px solid rgba(139, 139, 139, .3);
-    color: #ff0202;
+    background-color: rgba(41, 35, 35, 0.662);
+    border: 2px solid rgba(9, 9, 9, 0.3);
+    color: #f4e409;
     border-radius: 25px;
     white-space: nowrap;
     margin: 13px 0px;
