@@ -1,0 +1,162 @@
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+  
+  .container {
+    width: 500px;
+    background: var(--bg-card);
+    color: var(--title-color);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(187, 180, 180, 0.2);
+    display: block;
+  }
+  
+  /*===== Header =====*/
+  .perfil {
+    display: flex;
+    align-items: center;
+  }
+  
+  .perfil > img {
+    max-width: 10rem;
+    max-height: 10rem;
+    border-radius: 20%;
+    box-shadow: 0px 0px 21px 2px rgb(235, 224, 11);
+  }
+  
+  .titleA {
+    margin-left: 1rem;
+  }
+  
+ .h4 {
+    font-weight: bolder;
+    font-size: 1.8rem;
+  }
+  
+.titleA > h5 {
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgb(4, 3, 3);
+    text-shadow: 1px 1px 2px black, 0 0 1em rgb(242, 226, 8), 0 0 0.2em rgb(242, 246, 0);
+  }
+  
+  .titleA > p {
+    font-weight: 00;
+    font-size: 1.1rem;
+    color: #f7ff0a;
+    margin-bottom: 0.3rem;
+  }
+  
+  /*==== texto animado ===== */
+  .line-1 {
+    position: relative;
+    top: 50%;
+    width: 28em;
+    border-right: 2px solid rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    color: var(--grey);
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 400;
+    transform: translateY(-50%);
+  }
+  
+  /* Animation */
+  .anim-typewriter {
+    animation: typewriter 4s steps(44) 1s 1 normal both,
+      blinkTextCursor 500ms steps(44) infinite normal;
+  }
+  
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 28em;
+    }
+  }
+  
+  @keyframes blinkTextCursor {
+    from {
+      border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+      border-right-color: transparent;
+    }
+  }
+  
+  @keyframes caret {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /*===== Icons ===== */
+  .lista-links {
+    color: var(--title-color);
+    list-style: none;
+  }
+  
+  .link-icon {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: red;
+    transition: color 0.2s;
+    list-style: none;
+  }
+  
+  .link-icon:hover {
+    color: var(--orange);
+  }
+  
+  /*===== Projetos =====*/
+  .projetos {
+    margin-top: 1rem;
+  }
+  
+  .container-projetos {
+    padding: 1.1rem 1rem;
+    background: var(--bg-projetc);
+    /*box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);*/
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  
+  .container-projetos h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .container-projetos ul {
+    margin-left: 1rem;
+    color: var(--title);
+  }
+  
+  .container-projetos li {
+    font-size: 0.9rem;
+  }
+  
+  .container-projetos a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--title);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1px;
+  }
+  
+  .container-projetos a:hover {
+    color: var(--purple);
+  }
+  
+  .container-projetos li:hover {
+    color: var(--purple);
+  }

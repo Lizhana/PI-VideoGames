@@ -19,7 +19,7 @@ describe('Videogame model', () => {
       });
       it('should return name not found', done => {
         Videogame.findAll()
-        .then(r => expect(r[1].name).to.be.false('NameNotFound'))
+        .then(r => expect(r[1].name).to.be.false('Name Not Found'))
         .catch(() => done())
       });
     });

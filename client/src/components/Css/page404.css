@@ -1,0 +1,10 @@
+.contenedor {
+  width: 100%;
+  display: inline-block;
+  height: 600px;
+  background-image: url('../imagenes/notf.gif');
+   border: 1px solid black;
+   background-repeat: repeat;
+   background-size: 1125px;
+
+}

@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogamesById, deleteVideogame} from "../actions";
 import Loader from "./Loader";
+import './Css/details.css'
 
 export default function DetailsVideogame() {
 
@@ -39,14 +40,15 @@ export default function DetailsVideogame() {
 
     return (
         <> 
-         <div>
+         <div className="divdetail">
+<div className="divima">
 
-            <Link to={'/home'} >
-            <button>Home</button>
-            </Link>
-            <div>
-                <img src={detail.background_image} alt="Not found" />
-                <h1>Nombre: {detail.name}</h1>
+     <h1 className="titlee" >Nombre: {detail.name}</h1>
+            <section>
+                <img src={detail.background_image} alt="Not found" className="imagendeta" />
+
+                
+               
                 <p >Released: {detail.released}</p>
                 <p className="platforms_detail">
                     Platforms: {detail.platforms}
@@ -57,6 +59,12 @@ export default function DetailsVideogame() {
                 <div>
                 <input onClick={handleSubmit} type="submit" value="DELETE" />
                 </div>
+                <Link to={'/home'} >
+            <button className="butdet">↶</button>
+            </Link>
+            <div>
+            </div>
+            </section>
             </div>
          </div>
         

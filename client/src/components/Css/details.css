@@ -1,0 +1,76 @@
+.divdetail{
+    background-image: url('../imagenes/detail1.webp');
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+}
+.divdetail:before{
+    content: "";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: radial-gradient(rgba(255, 255, 255, .2) 20%, transparent 20%);
+	background-size: 5px 5px;
+	z-index: -1;
+
+}
+
+.divdetail:after{
+	content: "";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .5);
+	z-index: -1;
+}
+.divima{
+    width: 960px;
+	height: auto;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.264);
+	margin: 20px auto;
+}
+
+
+.title{
+	width: 100%;
+	padding: 15px;
+	color: #FFF;
+	background: rgba(34, 34, 34, 0.509);
+}
+
+section{
+	width: 100%;
+	padding: 10px;
+	overflow: hidden;
+}
+
+section img{
+	width: 400px;
+	height: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+.butdet{
+    width: 1px;
+    height: 1px;
+    cursor: pointer;
+}
+section p{
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10px;
+    max-height: 40px;
+    margin-top: 10px;
+    background: #222;
+    color: #FFF;
+    resize: none;
+    border-radius: 6px;
+}
