@@ -7,6 +7,7 @@ router.get('/', async (req, res)=>{
   
     try {
   let userData = await User.findAll()
+  
  if(userData) res.status(200).json(userData)
     
     else {
@@ -21,16 +22,20 @@ router.post("/", async (req, res) => {
     const {
      name,
      password,
-     mail
+     mail,
+     country,
+     birthDate
     } = req.body;
   
     try {
       let createUser = await User.create({
         name,
         password,
-        mail
+        mail,
+        country,
+     birthDate
       });
-  
+  console.log(createUser);
       return res
         .status(200)
         .send(`The  ${name} has been created successfully`);
