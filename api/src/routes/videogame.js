@@ -47,7 +47,9 @@ router.get('/:id', async (req, res) => {
      else 
     {
       const game = await axios.get(
-        `https://api.rawg.io/api/games/${id}?&key=${API_KEY}`);
+        `https://api.rawg.io/api/games/${id}?&key=${API_KEY}`,
+        {headers: {'Accept-Encoding':
+      'gzip, deflate, compress'}});
 
       if(game.data.id){
         let genrestr=[]

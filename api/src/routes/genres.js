@@ -11,7 +11,8 @@ router.get('/', async (req, res)=>{
 
     try{
 
-    const genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+    const genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`, {headers: {'Accept-Encoding':
+    'gzip, deflate, compress'}});
 
     const nameGenres = genresApi.data.results;
     

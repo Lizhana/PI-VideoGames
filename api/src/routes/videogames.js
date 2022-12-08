@@ -35,7 +35,8 @@ router.get("/", async (req, res) => {
       );
 
       let vgNameApi = await axios.get(
-        `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
+        `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`, {headers: {'Accept-Encoding':
+        'gzip, deflate, compress'}}
       );
 
       const vgNameApiReady = vgNameApi.data.results.map((game) => {
@@ -75,7 +76,9 @@ router.get("/", async (req, res) => {
       let gamesDb = [...dbVideogames];
       let videogamesApi = [];
       let apiVideogames = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=3`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=3`,
+        {headers: {'Accept-Encoding':
+      'gzip, deflate, compress'}}
       );
       let allGamesApi = apiVideogames.data.results.map((game) => {
         let platform = [];
@@ -98,7 +101,8 @@ router.get("/", async (req, res) => {
       });
 
       let apiVideogamesB = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=2`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=2`, {headers: {'Accept-Encoding':
+        'gzip, deflate, compress'}}
       );
       let allGamesApiB = apiVideogamesB.data.results.map((game) => {
         let platform = [];
@@ -120,7 +124,8 @@ router.get("/", async (req, res) => {
       });
 
       let apiVideogamesC = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=4`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=4`, {headers: {'Accept-Encoding':
+        'gzip, deflate, compress'}}
       );
       let allGamesApiC = apiVideogamesC.data.results.map((game) => {
         let platform = [];
@@ -142,7 +147,8 @@ router.get("/", async (req, res) => {
       });
 
       let apiVideogamesD = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=5`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=5`, {headers: {'Accept-Encoding':
+        'gzip, deflate, compress'}}
       );
       let allGamesApiD = apiVideogamesD.data.results.map((game) => {
         let platform = [];
@@ -164,7 +170,9 @@ router.get("/", async (req, res) => {
       });
 
       let apiVideogamesE = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}&page=6`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=6`,
+        {headers: {'Accept-Encoding':
+      'gzip, deflate, compress'}}
       );
       let allGamesApiE = apiVideogamesE.data.results.map((game) => {
         let platform = [];
